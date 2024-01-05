@@ -1,0 +1,26 @@
+
+int k=0,c=0,ans=0;
+        for(int i=0;i<N;i++)k=max(k,arr[i]);
+        for(int i=0;i<32;i++)
+        {
+            if(k&(1<<i))c=i;
+        }
+        // cout<<c<<endl;
+        for(int i=c;i>=0;i--)
+        {
+            int count=0;
+            for(int j=0;j<N;j++)
+            {
+                if(arr[j]&(1<<i))
+                {
+                    // cout<<(arr[j]&ans)<<"-";
+                    if((arr[j]&ans)>=ans)
+                    {
+                        count++;
+                    }
+                }
+            }
+            if(count>1)ans+=(1<<i);
+            //  cout<<count<<" "<<ans<<endl;
+        }
+        return ans;
