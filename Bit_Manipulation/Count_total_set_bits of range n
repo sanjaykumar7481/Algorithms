@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    while(n--)
+    {
+        int a,c=0;
+        cin>>a;
+        a++;
+        while(t)
+        {
+            t>>=1;
+            c++;
+        }
+        int ans=0;
+        for(int i=0;i<c;i++)
+        {
+             ans+=(a/p)*(p/2);
+            int k=a%p;
+            ans+=max(0,k- p/2);
+            p*=2;
+        }
+        cout<<ans<<endl;
+    }
+}
