@@ -17,16 +17,11 @@ public:
         fun(root->right,s);
         root->val+=s;
         s=root->val;
-        //cout<<root->val<<" ";
         fun(root->left,s);
-        // s=root->val;
     }
     TreeNode* bstToGst(TreeNode* root) {
         int s=0;
-        fun(root->right,s);
-        root->val+=s;
-        s=root->val;
-        fun(root->left,s);
+        fun(root,s);
         return root;
     }
 };
