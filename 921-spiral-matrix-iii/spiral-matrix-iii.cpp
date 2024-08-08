@@ -15,10 +15,10 @@ public:
                 cStart+=dir[p][1];
                 if(rStart>=0 and rStart<rows and cStart>=0 and cStart<cols)
                 {
-                    // cout<<rStart<<" "<<cStart<<endl;
                     count--;
                     res.push_back({rStart,cStart});
                 }
+                if(count==0)return res;
             }
             p=(p+1)%4;
             if(p%2==0)size++;
