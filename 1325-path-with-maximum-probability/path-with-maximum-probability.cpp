@@ -8,12 +8,12 @@ public:
             adj[edges[i][0]].push_back({edges[i][1],succProb[i]});
             adj[edges[i][1]].push_back({edges[i][0],succProb[i]});
         }
-        queue<pair<double,int>>q;
+        priority_queue<pair<double,int>>q;
         dist[start_node]=1e9;
         q.push({1,start_node});
         while(!q.empty())
         {
-            auto a=q.front();
+            auto a=q.top();
             q.pop();
             for(auto i:adj[a.second])
             {
