@@ -1,28 +1,53 @@
+class Trie{
+    public:
+        bool end;
+        Trie* contain[20]={NULL};
+        Trie(){
+            this->end=false;
+        }
+};
 class Solution {
 public:
     int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
-        unordered_map<string,int>mp;
+        Trie *newTrie=new Trie();
+        int res=0;
+        // cout<<newTrie->contain[0]<<" ";
         for(auto i:arr1)
         {
             string k=to_string(i);
-            while(k!="")
+            Trie *temp=newTrie;
+            for(auto j:k)
             {
-                mp[k]=0;
-                k.pop_back();
+                if(temp->contain[j-'0']!=NULL)
+                {
+                    temp=temp->contain[j-'0'];
+                }
+                else
+                {
+                    temp->contain[j-'0']=new Trie();
+                    temp=temp->contain[j-'0'];
+                }
             }
+            temp->end=true;
         }
-        int res=0;
         for(auto i:arr2)
         {
-           string k=to_string(i);
-            while(res<k.size() and k!="" and mp.find(k)==mp.end())
+            string k=to_string(i);
+            int c=0;
+            Trie *temp=newTrie;
+            for(auto j:k)
             {
-                k.pop_back();
+                if(temp->contain[j-'0']!=NULL)
+                {
+                    temp=temp->contain[j-'0'];
+                    c++;
+                }
+                else{
+                    res=max(res,c);
+                    break;
+                }
             }
-            if(mp.find(k)!=mp.end())
-            {
-                if(res<k.size())res=k.size();
-            }
+            res=max(res,c);
         }
         return res;
     }
