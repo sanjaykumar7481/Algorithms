@@ -1,2 +1,2 @@
 # Write your MySQL query statement below
-select unique_id,name from Employees left join EmployeeUNI on Employees.id=EmployeeUNI.id;
+select coalesce(empun.unique_id,null) as unique_id,emp.name from Employees emp left join EmployeeUNI empun on emp.id=empun.id;
