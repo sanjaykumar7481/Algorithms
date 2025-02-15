@@ -1,6 +1,7 @@
 class Solution {
     public boolean equals(int i,String nn,int val,String temp,int tar)
     {
+        if(val>tar)return false;
         if(i==nn.length())
         {
             if(val==tar && temp==""){
