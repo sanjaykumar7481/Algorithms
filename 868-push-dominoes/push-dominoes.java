@@ -1,4 +1,10 @@
 class Solution {
+
+    private String repeat(String r,int c){
+        String res="";
+        for(int i=0;i<c;i++)res+=r;
+        return res;
+    }
     public String pushDominoes(String dominoes) {
         String res="",temp="";
         boolean left_exist=false,right_exist=false;
@@ -7,7 +13,7 @@ class Solution {
             String L="L",R="R";
             if(dominoes.charAt(i)=='R')
             {
-                if(right_exist)res+=R.repeat(empty_count);
+                if(right_exist)res+=repeat("R",empty_count);
                 else res+=temp;
                 empty_count=0;
                 right_exist=true;
@@ -17,12 +23,12 @@ class Solution {
             else if(dominoes.charAt(i)=='L')
             {
                 if(right_exist){
-                    res+=R.repeat(empty_count/2);
+                    res+=repeat("R",empty_count/2);
                     if(empty_count%2==1)res+=".";
-                    res+=L.repeat(empty_count/2);
+                    res+=repeat("L",empty_count/2);
                 }
                 else{
-                    res+=L.repeat(empty_count);
+                    res+=repeat("L",empty_count);
                 }
                 temp="";
                 empty_count=0;
@@ -37,8 +43,7 @@ class Solution {
             }
             
         }
-        String R="R";
-        if(right_exist)res+=R.repeat(empty_count);
+        if(right_exist)res+=repeat("R",empty_count);
         else res+=temp;
         return res;
     }
