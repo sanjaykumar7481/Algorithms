@@ -17,8 +17,8 @@ public:
         }
         for(int i=0;i<n;i++)
         {
-            int as=i-1>=0?prev[i-1]:0;
-            int bs=i+1<n?after[i+1]:0;
+            int bs=i-1>=0?prev[i-1]:0;
+            int as=i+1<n?after[i+1]:0;
             ans=min(ans,as+bs);
         }
         return ans;
